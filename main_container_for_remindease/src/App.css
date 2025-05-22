@@ -248,7 +248,7 @@ body {
   box-sizing: border-box;
 }
 
-/* Skeuomorphic card design */
+/* Enhanced skeuomorphic card design */
 .sk-card {
   background: var(--card-bg);
   border-radius: var(--border-radius);
@@ -257,6 +257,25 @@ body {
   margin-bottom: 20px;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.sk-card:hover {
+  background: var(--card-gradient-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--depth-shadow);
+}
+
+.sk-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-color), var(--primary-hover));
+  opacity: 0.8;
 }
 
 .sk-card::after {
@@ -269,6 +288,14 @@ body {
   background-image: var(--paper-texture);
   opacity: 0.5;
   pointer-events: none;
+}
+
+/* Glass card variant */
+.sk-card-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 }
 
 /* Skeuomorphic input field */
