@@ -1,0 +1,112 @@
+/* ReminderItem component styles with skeuomorphic design elements */
+
+.reminder-item {
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: var(--border-radius);
+  margin-bottom: 16px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.reminder-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--paper-texture);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.reminder-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.reminder-item.completed {
+  opacity: 0.7;
+}
+
+.reminder-item.completed .reminder-title {
+  text-decoration: line-through;
+  color: var(--text-tertiary);
+}
+
+.reminder-checkbox-container {
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.reminder-checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  background: var(--inset-bg);
+  box-shadow: var(--inset-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.reminder-item:hover .reminder-checkbox {
+  border-color: var(--primary-color);
+}
+
+.reminder-check {
+  color: var(--primary-color);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.reminder-content {
+  flex: 1;
+}
+
+.reminder-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.reminder-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.reminder-date {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  padding: 4px 10px;
+  background: var(--inset-bg);
+  border-radius: 12px;
+  box-shadow: var(--inset-shadow);
+}
+
+.reminder-category {
+  display: flex;
+  align-items: center;
+}
+
+.reminder-category-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+.reminder-category-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
