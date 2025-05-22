@@ -48,13 +48,39 @@ function App() {
     );
   };
 
+  // Generate a new unique ID for reminders
+  const generateId = () => {
+    const maxId = reminders.length > 0
+      ? Math.max(...reminders.map(r => r.id))
+      : 0;
+    return maxId + 1;
+  };
+
+  // Add a new reminder
+  const addReminder = (reminderData) => {
+    const newReminder = {
+      id: generateId(),
+      title: reminderData.title,
+      category: reminderData.category,
+      date: reminderData.date,
+      completed: false,
+      categoryColor: reminderData.categoryColor
+    };
+    
+    setReminders(prevReminders => [...prevReminders, newReminder]);
+  };
+
+  // Open/close form handlers
+  const openForm = () => setIsFormOpen(true);
+  const closeForm = () => setIsFormOpen(false);
+
   return (
     <ThemeProvider>
       <MainContainer>
         <div className="reminders-container">
           <div className="section-header">
             <h2 className="section-title">My Reminders</h2>
-            <button className="btn">+ New Reminder</button>
+            <button className="btn" onClick={openForm}>+ New Reminder</button>
           </div>
           
           <div className="reminders-list">
