@@ -202,7 +202,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at top right, var(--glass-bg), transparent 70%);
+  background: 
+    linear-gradient(transparent, transparent 27px, var(--border-color) 27px, var(--border-color) 28px, transparent 28px),
+    radial-gradient(circle at top right, var(--glass-bg), transparent 70%);
+  background-size: 100% 28px, 100% 100%;
   opacity: 0.3;
   pointer-events: none;
 }
