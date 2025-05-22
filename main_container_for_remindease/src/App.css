@@ -161,7 +161,7 @@ body {
   color: var(--primary-color);
 }
 
-/* Button styles with skeuomorphic design */
+/* Button styles with enhanced skeuomorphic design */
 .btn {
   background: var(--button-bg);
   color: white;
@@ -174,6 +174,21 @@ body {
   box-shadow: var(--button-shadow);
   transition: all 0.2s ease;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  opacity: 0.5;
+  z-index: -1;
 }
 
 .btn:hover {
