@@ -97,6 +97,13 @@ function App() {
             ))}
           </div>
         </div>
+        
+        {/* Reminder Form Modal */}
+        <ReminderForm 
+          isOpen={isFormOpen}
+          onClose={closeForm}
+          onSave={addReminder}
+        />
       </MainContainer>
     </ThemeProvider>
   );
