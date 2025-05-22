@@ -22,7 +22,7 @@
   bottom: 0;
   width: 3px;
   background: linear-gradient(to bottom, var(--primary-color), var(--primary-hover));
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .reminder-item::after {
@@ -33,7 +33,7 @@
   right: 0;
   bottom: 0;
   background-image: var(--paper-texture);
-  opacity: 0.3;
+  opacity: 0.5;
   pointer-events: none;
 }
 
