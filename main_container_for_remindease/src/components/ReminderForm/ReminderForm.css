@@ -6,23 +6,47 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.65);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(8px);
 }
 
 .reminder-form {
   background: var(--card-bg);
   border-radius: var(--border-radius);
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--depth-shadow), var(--card-shadow);
   width: 90%;
   max-width: 450px;
-  padding: 24px;
+  padding: 28px;
   position: relative;
   overflow: hidden;
+  border: 1px solid var(--border-color);
+  animation: form-appear 0.3s ease-out forwards;
+}
+
+@keyframes form-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reminder-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  opacity: 0.8;
 }
 
 .reminder-form::after {
