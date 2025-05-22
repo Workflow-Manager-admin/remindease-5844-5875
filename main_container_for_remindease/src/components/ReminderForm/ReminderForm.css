@@ -46,7 +46,7 @@
   right: 0;
   height: 4px;
   background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .reminder-form::after {
@@ -57,8 +57,9 @@
   right: 0;
   bottom: 0;
   background-image: var(--paper-texture);
-  opacity: 0.3;
+  opacity: 0.5;
   pointer-events: none;
+  z-index: -1;
 }
 
 .form-header {
