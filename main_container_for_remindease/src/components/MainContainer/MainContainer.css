@@ -1,11 +1,24 @@
-/* MainContainer component styles with skeuomorphic design elements */
+/* MainContainer component styles with enhanced skeuomorphic design elements */
 
 .main-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--bg-main);
-  transition: background-color var(--transition-speed);
+  background: var(--bg-gradient);
+  transition: background var(--transition-speed);
+  position: relative;
+}
+
+.main-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--paper-texture);
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 /* Header styles */
@@ -17,6 +30,8 @@
   top: 0;
   z-index: 100;
   transition: all var(--transition-speed);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(5px);
 }
 
 .brand {
