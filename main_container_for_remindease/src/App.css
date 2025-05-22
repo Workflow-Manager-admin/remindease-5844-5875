@@ -1,18 +1,74 @@
+/* Theme Variables */
 :root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
+  /* Common variables */
+  --transition-speed: 0.3s;
+  --border-radius: 12px;
+  --shadow-strength: 1;
+  --font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  
+  /* Skeuomorphic design common elements */
+  --button-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --button-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.22);
+  --inset-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Light Theme Variables */
+body[data-theme="light"] {
+  --primary-color: #E87A41;
+  --primary-hover: #FF8B4D;
+  --bg-main: #f5f5f7;
+  --bg-container: #ffffff;
+  --bg-sidebar: #e8e8e8;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --border-color: #dddddd;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --highlight: #fff8f3;
+  
+  /* Skeuomorphic design elements - Light */
+  --card-bg: linear-gradient(145deg, #ffffff, #f0f0f0);
+  --card-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+  --inset-bg: linear-gradient(145deg, #f0f0f0, #ffffff);
+  --button-bg: linear-gradient(145deg, #ff8b4d, #e87a41);
+  --button-active: linear-gradient(145deg, #e87a41, #d26f3b);
+  --toggle-handle-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+  --paper-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23767676' fill-opacity='0.05' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* Dark Theme Variables */
+body[data-theme="dark"] {
+  --primary-color: #FF8B4D;
+  --primary-hover: #FFA06A;
+  --bg-main: #121212;
+  --bg-container: #1e1e1e;
+  --bg-sidebar: #262626;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-tertiary: rgba(255, 255, 255, 0.5);
+  --border-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --highlight: #2a1a10;
+  
+  /* Skeuomorphic design elements - Dark */
+  --card-bg: linear-gradient(145deg, #1e1e1e, #181818);
+  --card-shadow: 5px 5px 10px #131313, -5px -5px 10px #292929;
+  --inset-bg: linear-gradient(145deg, #181818, #1e1e1e);
+  --button-bg: linear-gradient(145deg, #ff9d66, #e88a4c);
+  --button-active: linear-gradient(145deg, #e88a4c, #d27a41);
+  --toggle-handle-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  --paper-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* Base styles */
 body {
   margin: 0;
-  font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  background-color: var(--kavia-dark);
-  color: var(--text-color);
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 .app {
@@ -21,18 +77,21 @@ body {
   flex-direction: column;
 }
 
+/* Navbar styles */
 .navbar {
-  background-color: var(--kavia-dark);
+  background-color: var(--bg-container);
   padding: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border-color);
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   box-sizing: border-box;
   z-index: 100;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .logo {
@@ -44,65 +103,145 @@ body {
 }
 
 .logo-symbol {
-  color: var(--kavia-orange);
+  color: var(--primary-color);
 }
 
+/* Button styles with skeuomorphic design */
+.btn {
+  background: var(--button-bg);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: var(--button-shadow);
+  transition: all 0.2s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  box-shadow: var(--button-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  background: var(--button-active);
+  box-shadow: var(--inset-shadow);
+  transform: translateY(1px);
+}
+
+.btn-large {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: var(--inset-bg);
+  border-radius: 20px;
+  padding: 4px;
+  width: 50px;
+  height: 26px;
+  position: relative;
+  box-shadow: var(--inset-shadow);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle-handle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  transition: transform 0.3s ease;
+  box-shadow: var(--toggle-handle-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+}
+
+.theme-toggle[data-theme="dark"] .theme-toggle-handle {
+  transform: translateX(24px);
+}
+
+/* Container with skeuomorphic design */
 .container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 24px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.hero {
-  padding-top: 120px;
-  padding-bottom: 64px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
+/* Skeuomorphic card design */
+.sk-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sk-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--paper-texture);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Skeuomorphic input field */
+.sk-input-group {
+  margin-bottom: 16px;
+}
+
+.sk-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--inset-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--inset-shadow);
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.sk-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--highlight);
+}
+
+/* Typography */
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
 }
 
 .subtitle {
-  color: var(--kavia-orange);
+  color: var(--primary-color);
   font-weight: 500;
   font-size: 1.1rem;
-}
-
-.title {
-  font-size: 3.5rem;
-  font-weight: 600;
-  line-height: 1.2;
-  margin: 0;
+  margin-bottom: 8px;
 }
 
 .description {
   font-size: 1.1rem;
   line-height: 1.5;
   color: var(--text-secondary);
-  max-width: 600px;
   margin-bottom: 16px;
-}
-
-.btn {
-  background-color: var(--kavia-orange);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.btn:hover {
-  background-color: #FF8B4D;
-}
-
-.btn-large {
-  padding: 12px 24px;
-  font-size: 1.1rem;
 }
