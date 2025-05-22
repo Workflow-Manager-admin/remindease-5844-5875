@@ -3,8 +3,12 @@ import './App.css';
 import { ThemeProvider } from './context/ThemeContext';
 import MainContainer from './components/MainContainer/MainContainer';
 import ReminderItem from './components/ReminderItem/ReminderItem';
+import ReminderForm from './components/ReminderForm/ReminderForm';
 
 function App() {
+  // State for modal visibility
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  
   // Sample reminders data
   const [reminders, setReminders] = useState([
     {
